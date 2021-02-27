@@ -1,11 +1,11 @@
-FROM docker.io/library/golang:1.13 AS builder
+FROM golang:1.13 AS builder
 WORKDIR /go/src/github.com/NVIDIA/gpu-operator
 
 COPY . .
 
 RUN make build
 
-FROM docker.io/nvidia/cuda:11.2.0-base-ubi8
+FROM nvidia/cuda:11.2.0-base-ubi8
 
 ENV NVIDIA_DISABLE_REQUIRE="true"
 ENV NVIDIA_VISIBLE_DEVICES=all
