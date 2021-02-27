@@ -756,8 +756,7 @@ func setContainerEnvFromEnvVar(c *corev1.Container, env corev1.EnvVar ) {
 		if env.ValueFrom != nil {
 			c.Env[i].ValueFrom = env.ValueFrom.DeepCopy()
 			c.Env[i].Value = ""
-		} 
-		else {
+		} else {
 			c.Env[i].Value = env.Value
 		}
 		return
