@@ -1,5 +1,5 @@
-packageName: gpu-operator-certified
+packageName: gpu-operator-wzh
 channels:
 - name: stable
-  currentCSV: gpu-operator-certified.v1.5.2
+  currentCSV: gpu-operator-wzh.v1.5.2
 defaultChannel: stable
