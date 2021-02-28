@@ -626,4 +626,4 @@ spec:
   provider:
     name: NVIDIA Corporation
   version: 1.5.2
-  replaces: gpu-operator-certified.v1.5.1
+  # replaces: gpu-operator-certified.v1.5.1
