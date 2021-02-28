@@ -620,10 +620,10 @@ spec:
   - monitoring
   - tesla
   maintainers:
-  - name: NVIDIA
+  - name: NVIDIA & wzh
     email: operator_feedback@nvidia.com
   maturity: stable
   provider:
-    name: NVIDIA Corporation
+    name: NVIDIA & wzh
   version: 1.5.2
   # replaces: gpu-operator-certified.v1.5.1
