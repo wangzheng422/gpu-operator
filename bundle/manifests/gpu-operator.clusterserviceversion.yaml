@@ -31,9 +31,11 @@ metadata:
               "args": [],
               "env": {
                   'name': 'NODE_NAME',
-                  'valueFrom':
-                    'fieldRef':
-                      'fieldPath': 'spec.nodeName'
+                  'valueFrom': {
+                      'fieldRef': {
+                          'fieldPath': 'spec.nodeName'
+                      }   
+                  }
               },
               "nodeSelector": {},
               "podSecurityContext": {},
