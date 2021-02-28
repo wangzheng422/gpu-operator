@@ -28,17 +28,8 @@ metadata:
               "affinity": {},
               "image": "qimgs",
               "imagePullSecrets": [],
-              "args": [
-                  "gpushare-device-plugin-v2",
-                  "-logtostderr",
-                  "--v=5"
-              ],
-              "env": {
-                  'name': 'NODE_NAME',
-                  'valueFrom':
-                    'fieldRef':
-                      'fieldPath': 'spec.nodeName'
-              },
+              "args": [],
+              "env": {},
               "nodeSelector": {},
               "podSecurityContext": {},
               "repository": "quay.io/wangzheng422",
