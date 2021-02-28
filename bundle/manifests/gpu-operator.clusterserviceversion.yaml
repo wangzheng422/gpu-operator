@@ -28,7 +28,11 @@ metadata:
               "affinity": {},
               "image": "qimgs",
               "imagePullSecrets": [],
-              "args": [],
+              "args": [
+                  "gpushare-device-plugin-v2",
+                  "-logtostderr",
+                  "--v=5"
+              ],
               "env": {
                   'name': 'NODE_NAME',
                   'valueFrom': {
