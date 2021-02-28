@@ -29,9 +29,9 @@ metadata:
               "image": "qimgs",
               "imagePullSecrets": [],
               "args": [
-                  'gpushare-device-plugin-v2',
-                  '-logtostderr',
-                  '--v=5'
+                  "gpushare-device-plugin-v2",
+                  "-logtostderr",
+                  "--v=5"
               ],
               "env": {
                   'name': 'NODE_NAME',
