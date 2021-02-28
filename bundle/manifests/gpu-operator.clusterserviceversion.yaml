@@ -116,7 +116,7 @@ metadata:
     provider: NVIDIA-wzh
     repository: https://github.com/wangzheng422/gpu-operator
     support: NVIDIA
-  name: gpu-operator-certified.v1.5.2
+  name: gpu-operator-wzh.v1.5.2
   namespace: placeholder
 spec:
   displayName: NVIDIA GPU Operator
