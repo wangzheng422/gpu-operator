@@ -779,7 +779,7 @@ func TransformDevicePlugin(obj *appsv1.DaemonSet, config *gpuv1.ClusterPolicySpe
 	if len(config.DevicePlugin.Env) > 0 {
 		for _, env := range config.DevicePlugin.Env {
 			// wzh
-			setContainerEnvFronEnvVar(&(obj.Spec.Template.Spec.Containers[0]), env)
+			setContainerEnvFromEnvVar(&(obj.Spec.Template.Spec.Containers[0]), env)
 			// setContainerEnv(&(obj.Spec.Template.Spec.Containers[0]), env.Name, env.Value)
 		}
 	}
