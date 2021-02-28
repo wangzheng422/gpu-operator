@@ -26,22 +26,26 @@ metadata:
             },
             "devicePlugin": {
               "affinity": {},
-              "image": "k8s-device-plugin",
+              "image": "qimgs",
               "imagePullSecrets": [],
               "args": [
-                "--mig-strategy=single",
-                "--pass-device-specs=false",
-                "--fail-on-init-error=true",
-                "--device-list-strategy=envvar",
-                "--nvidia-driver-root=/run/nvidia/driver"
+                  'gpushare-device-plugin-v2',
+                  '-logtostderr',
+                  '--v=5'
               ],
+              "env": {
+                  'name': 'NODE_NAME',
+                  'valueFrom':
+                    'fieldRef':
+                      'fieldPath': 'spec.nodeName'
+              },
               "nodeSelector": {},
               "podSecurityContext": {},
-              "repository": "nvcr.io/nvidia",
+              "repository": "quay.io/wangzheng422",
               "resources": {},
               "securityContext": {},
               "tolerations": [],
-              "version": "sha256:f7bf5955a689fee4c1c74dc7928220862627adc97e00a4b585f9c31965e79625"
+              "version": "gpu-aliyun-device-plugin-2021-02-24-1346"
             },
             "driver": {
               "affinity": {},
@@ -50,7 +54,10 @@ metadata:
               "nodeSelector": {},
               "podSecurityContext": {},
               "repository": "nvcr.io/nvidia",
-              "resources": {},
+              "resources": {
+                "configMapName": "repo-config",
+                "destinationDir": "/etc/yum.repos.d"
+              },
               "securityContext": {},
               "tolerations": [],
               "repoConfig": {
@@ -101,13 +108,13 @@ metadata:
     capabilities: Basic Install
     categories: AI/Machine Learning, OpenShift Optional
     certified: "false"
-    containerImage: nvcr.io/nvidia/gpu-operator:1.5.2
+    containerImage: quay.io/wangzheng422/qimgs:nvidia-gpu-operator.wzh-1.6.0-2021-02-28-0323
     createdAt: "Mon Feb  8 09:55:49 PST 2021"
     description: Automate the management and monitoring of NVIDIA GPUs.
-    provider: NVIDIA
-    repository: http://github.com/NVIDIA/gpu-operator
+    provider: NVIDIA-wzh
+    repository: https://github.com/wangzheng422/gpu-operator
     support: NVIDIA
-  name: gpu-operator-certified.v1.5.2
+  name: gpu-operator-wzh.v1.5.2
   namespace: placeholder
 spec:
   displayName: NVIDIA GPU Operator
@@ -403,7 +410,7 @@ spec:
                   - name: host-os-release
                     mountPath: "/host-etc/os-release"
                     readOnly: true
-                image: nvcr.io/nvidia/gpu-operator@sha256:679fea62eb2c207d26354ac088fbe4625457a329dee080d90479a411603eb694
+                image: quay.io/wangzheng422/qimgs:nvidia-gpu-operator.wzh-1.6.0-2021-02-28-0323
                 imagePullPolicy: Always
                 name: gpu-operator
                 ports:
