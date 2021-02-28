@@ -935,6 +935,26 @@ func setContainerEnv(c *corev1.Container, key, value string) {
 	c.Env = append(c.Env, corev1.EnvVar{Name: key, Value: value})
 }
 
+func setContainerEnvFromEnvVar(c *corev1.Container, env corev1.EnvVar ) {
+	for i, val := range c.Env {
+		if val.Name != env.Name {
+			continue
+		}
+
+		if env.ValueFrom != nil {
+			c.Env[i].ValueFrom = env.ValueFrom.DeepCopy()
+			c.Env[i].Value = ""
+		} else {
+			c.Env[i].Value = env.Value
+		}
+		return
+	}
+
+	log.Info(fmt.Sprintf("Info: Could not find environment variable %s in container %s, appending it", env.Name, c.Name))
+
+	c.Env = append(c.Env, *(env.DeepCopy()))
+}
+
 func updateValidationInitContainer(obj *appsv1.DaemonSet, config *gpuv1.ClusterPolicySpec) error {
 	for i, initContainer := range obj.Spec.Template.Spec.InitContainers {
 		// skip if not validation initContainer
